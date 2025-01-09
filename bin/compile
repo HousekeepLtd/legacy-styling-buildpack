@@ -4,7 +4,12 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
 
-sudo apt-get install awscli
+# Install AWS CLI
+echo "Installing AWS CLI..."
+
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
 
 # By specifying the static directory, we can sync only the static files and to the correct directory in the application
 S3_BUCKET="s3://housekeep-legacy-styles/static/"
