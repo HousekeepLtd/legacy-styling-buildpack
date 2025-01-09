@@ -1,0 +1,23 @@
+#!/bin/bash
+
+BUILD_DIR=$1
+CACHE_DIR=$2
+ENV_DIR=$3
+BIN_DIR=$(cd "$(dirname "$0")" || exit; pwd) # absolute path
+BUILDPACK_DIR=$(dirname "$BIN_DIR")
+
+sudo apt-get install awscli
+
+# By specifying the static directory, we can sync only the static files and to the correct directory in the application
+S3_BUCKET="s3://housekeep-legacy-styles/static/"
+
+# Define the local directory where you want to store the files
+LOCAL_DIR="$BUILD_DIR/housekeep/static/"
+
+# Make sure the local directory exists
+mkdir -p "$LOCAL_DIR"
+
+# Use AWS CLI to sync the S3 bucket to the local directory
+aws s3 sync "$S3_BUCKET" "$LOCAL_DIR" --no-sign-request
+
+# --no-sign-request tells AWS CLI that the bucket is public and does not require credentials
