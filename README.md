@@ -1,6 +1,6 @@
 # legacy-styling-buildpack
 
-This build pack is bridge the gap with Heroku-22 and above, where ruby 2.5.9  is no longer supported.
+This build pack is used to bridge the gap with Heroku-22 and above, where ruby 2.5.9  is no longer supported.
 
 Unfortunately, our styling relies on several gems that are no longer supported in the latest version of Ruby.
 

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo "-------"
+
+echo "Completed Styling Installation"
+
+set -euo pipefail
+
+BUILD_DIR="${1:-}"
+RELEASE_FILE="${BUILD_DIR}/tmp/heroku-buildpack-release-step.yml"
+
+# Whilst the release file is always written by the buildpack, some apps use
+# third-party slug cleaner buildpacks to remove this and other files, so we
+# cannot assume it still exists by the time the release step runs.
+if [[ -f "${RELEASE_FILE}" ]]; then
+  cat "${RELEASE_FILE}"
+fi
