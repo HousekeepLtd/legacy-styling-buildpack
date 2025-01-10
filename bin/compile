@@ -18,6 +18,12 @@ mkdir aws-cli/bin
 echo "Installing AWS CLI..."
 ./aws/install -i aws-cli -b aws-cli/bin
 
+echo $SHELL
+
+chmod -R 755 aws-cli
+
+aws --version
+
 # By specifying the static directory, we can sync only the static files and to the correct directory in the application
 S3_BUCKET="s3://housekeep-legacy-styles/static/"
 
