@@ -2,4 +2,6 @@
 
 echo "-------"
 
-echo "Completed Styling Installation"
+echo "addons:"
+echo "config_vars:"
+echo "default_process_types:"
