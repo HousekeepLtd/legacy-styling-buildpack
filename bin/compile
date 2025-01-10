@@ -15,12 +15,12 @@ unzip awscliv2.zip
 mkdir aws-cli
 mkdir aws-cli/bin
 
+chmod -R 755 aws-cli
+
 echo "Installing AWS CLI..."
 ./aws/install -i aws-cli -b aws-cli/bin
 
 #echo $SHELL
-
-chmod -R 755 aws-cli
 
 aws-cli/bin/aws --version
 
