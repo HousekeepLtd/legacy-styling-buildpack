@@ -1,7 +1,0 @@
-#!/bin/bash
-
-echo "-------"
-
-echo "addons:"
-echo "config_vars:"
-echo "default_process_types:"
