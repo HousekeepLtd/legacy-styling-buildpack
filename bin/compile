@@ -6,40 +6,31 @@ ENV_DIR=$3
 
 set -euo pipefail
 
-# Install AWS CLI
-echo "Downloading AWS CLI..."
+echo "Creating static directory"
 
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-unzip awscliv2.zip
 
-mkdir aws-cli
-mkdir aws-cli/bin
-
-chmod -R 755 aws-cli
-
-echo "Installing AWS CLI..."
-./aws/install -i aws-cli -b aws-cli/bin
-
-#echo $SHELL
-
-aws-cli/bin/aws --version
-
-# By specifying the static directory, we can sync only the static files and to the correct directory in the application
-S3_BUCKET="s3://housekeep-legacy-styles/static/"
-
-# Define the local directory where you want to store the files
-STATIC_DIR="$BUILD_DIR/housekeep/static/"
+STATIC_DIR="$BUILD_DIR/housekeep/static/css"
 
 # Make sure we're at the root level
 cd "$BUILD_DIR" || exit
 
-# Make sure the local directory exists
+
+# Create static directory
 mkdir -p "$STATIC_DIR"
 
 echo "Syncing static files..."
-
-# Use AWS CLI to sync the S3 bucket to the local directory
-aws-cli/bin/aws s3 sync "$S3_BUCKET" "$STATIC_DIR" --no-sign-request
+curl https://housekeep-legacy-styles.s3.eu-west-2.amazonaws.com/static/css/admin-styles.css -o "$STATIC_DIR/admin-styles.css"
+curl https://housekeep-legacy-styles.s3.eu-west-2.amazonaws.com/static/css/admin.css -o "$STATIC_DIR/admin.css"
+curl https://housekeep-legacy-styles.s3.eu-west-2.amazonaws.com/static/css/app-housekeepers-fallback.css -o "$STATIC_DIR/app-housekeepers-fallback.css"
+curl https://housekeep-legacy-styles.s3.eu-west-2.amazonaws.com/static/css/email-base-premailer-ignore.css -o "$STATIC_DIR/email-base-premailer-ignore.css"
+curl https://housekeep-legacy-styles.s3.eu-west-2.amazonaws.com/static/css/email-base.css -o "$STATIC_DIR/email-base.css"
+curl https://housekeep-legacy-styles.s3.eu-west-2.amazonaws.com/static/css/emailed_infosheet.css -o "$STATIC_DIR/emailed_infosheet.css"
+curl https://housekeep-legacy-styles.s3.eu-west-2.amazonaws.com/static/css/infosheet.css -o "$STATIC_DIR/infosheet.css"
+curl https://housekeep-legacy-styles.s3.eu-west-2.amazonaws.com/static/css/members.css -o "$STATIC_DIR/members.css"
+curl https://housekeep-legacy-styles.s3.eu-west-2.amazonaws.com/static/css/ops-styles.css -o "$STATIC_DIR/ops-styles.css"
+curl https://housekeep-legacy-styles.s3.eu-west-2.amazonaws.com/static/css/recruit.css -o "$STATIC_DIR/recruit.css"
+curl https://housekeep-legacy-styles.s3.eu-west-2.amazonaws.com/static/css/style.css -o "$STATIC_DIR/style.css"
+curl https://housekeep-legacy-styles.s3.eu-west-2.amazonaws.com/static/css/worker-agreement.css -o "$STATIC_DIR/worker-agreement.css"
 
 echo "Syncing complete"
 
