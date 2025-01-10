@@ -12,8 +12,11 @@ echo "Downloading AWS CLI..."
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 
+mkdir aws-cli
+mkdir aws-cli/bin
+
 echo "Installing AWS CLI..."
-./aws/install
+./aws/install -i aws-cli -b aws-cli/bin
 
 # By specifying the static directory, we can sync only the static files and to the correct directory in the application
 S3_BUCKET="s3://housekeep-legacy-styles/static/"
