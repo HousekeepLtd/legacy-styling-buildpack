@@ -33,5 +33,3 @@ curl https://housekeep-legacy-styles.s3.eu-west-2.amazonaws.com/static/css/style
 curl https://housekeep-legacy-styles.s3.eu-west-2.amazonaws.com/static/css/worker-agreement.css -o "$STATIC_DIR/worker-agreement.css"
 
 echo "Syncing complete"
-
-# --no-sign-request tells AWS CLI that the bucket is public and does not require credentials
