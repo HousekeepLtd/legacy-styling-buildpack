@@ -10,4 +10,6 @@ This is made up of two scripts:
 - bin/detect
 - bin/compile
 
+If any additional scss files are added to domo or email bases, they will need to be added to the S3 bucket AND to the `compile` script to copy them into the application on deployment
+
 _NB: Buildpacks normally have a `release` script, but this is not needed for this buildpack as we are simply putting files into a folder, there's no metadata required to be output._
