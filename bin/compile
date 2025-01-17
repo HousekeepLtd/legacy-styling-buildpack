@@ -14,22 +14,22 @@ STATIC_DIR="$BUILD_DIR/housekeep/static/css"
 # Make sure we're at the root level
 cd "$BUILD_DIR" || exit
 
-
 # Create static directory
 mkdir -p "$STATIC_DIR"
 
-echo "Syncing static files..."
-curl https://housekeep-legacy-styles.s3.eu-west-2.amazonaws.com/static/css/admin-styles.css -o "$STATIC_DIR/admin-styles.css"
-curl https://housekeep-legacy-styles.s3.eu-west-2.amazonaws.com/static/css/admin.css -o "$STATIC_DIR/admin.css"
-curl https://housekeep-legacy-styles.s3.eu-west-2.amazonaws.com/static/css/app-housekeepers-fallback.css -o "$STATIC_DIR/app-housekeepers-fallback.css"
-curl https://housekeep-legacy-styles.s3.eu-west-2.amazonaws.com/static/css/email-base-premailer-ignore.css -o "$STATIC_DIR/email-base-premailer-ignore.css"
-curl https://housekeep-legacy-styles.s3.eu-west-2.amazonaws.com/static/css/email-base.css -o "$STATIC_DIR/email-base.css"
-curl https://housekeep-legacy-styles.s3.eu-west-2.amazonaws.com/static/css/emailed_infosheet.css -o "$STATIC_DIR/emailed_infosheet.css"
-curl https://housekeep-legacy-styles.s3.eu-west-2.amazonaws.com/static/css/infosheet.css -o "$STATIC_DIR/infosheet.css"
-curl https://housekeep-legacy-styles.s3.eu-west-2.amazonaws.com/static/css/members.css -o "$STATIC_DIR/members.css"
-curl https://housekeep-legacy-styles.s3.eu-west-2.amazonaws.com/static/css/ops-styles.css -o "$STATIC_DIR/ops-styles.css"
-curl https://housekeep-legacy-styles.s3.eu-west-2.amazonaws.com/static/css/recruit.css -o "$STATIC_DIR/recruit.css"
-curl https://housekeep-legacy-styles.s3.eu-west-2.amazonaws.com/static/css/style.css -o "$STATIC_DIR/style.css"
-curl https://housekeep-legacy-styles.s3.eu-west-2.amazonaws.com/static/css/worker-agreement.css -o "$STATIC_DIR/worker-agreement.css"
+echo "Syncing static files from $STATIC_LEGACY_BUCKET_URL..."
+
+curl "$STATIC_LEGACY_BUCKET_URL"/static/css/admin-styles.css -o "$STATIC_DIR/admin-styles.css"
+curl "$STATIC_LEGACY_BUCKET_URL"/static/css/admin.css -o "$STATIC_DIR/admin.css"
+curl "$STATIC_LEGACY_BUCKET_URL"/static/css/app-housekeepers-fallback.css -o "$STATIC_DIR/app-housekeepers-fallback.css"
+curl "$STATIC_LEGACY_BUCKET_URL"/static/css/email-base-premailer-ignore.css -o "$STATIC_DIR/email-base-premailer-ignore.css"
+curl "$STATIC_LEGACY_BUCKET_URL"/static/css/email-base.css -o "$STATIC_DIR/email-base.css"
+curl "$STATIC_LEGACY_BUCKET_URL"/static/css/emailed_infosheet.css -o "$STATIC_DIR/emailed_infosheet.css"
+curl "$STATIC_LEGACY_BUCKET_URL"/static/css/infosheet.css -o "$STATIC_DIR/infosheet.css"
+curl "$STATIC_LEGACY_BUCKET_URL"/static/css/members.css -o "$STATIC_DIR/members.css"
+curl "$STATIC_LEGACY_BUCKET_URL"/static/css/ops-styles.css -o "$STATIC_DIR/ops-styles.css"
+curl "$STATIC_LEGACY_BUCKET_URL"/static/css/recruit.css -o "$STATIC_DIR/recruit.css"
+curl "$STATIC_LEGACY_BUCKET_URL"/static/css/style.css -o "$STATIC_DIR/style.css"
+curl "$STATIC_LEGACY_BUCKET_URL"/static/css/worker-agreement.css -o "$STATIC_DIR/worker-agreement.css"
 
 echo "Syncing complete"
