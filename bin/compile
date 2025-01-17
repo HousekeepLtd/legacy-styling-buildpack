@@ -17,6 +17,8 @@ cd "$BUILD_DIR" || exit
 # Create static directory
 mkdir -p "$STATIC_DIR"
 
+STATIC_LEGACY_BUCKET_URL="$ENV_DIR/STATIC_LEGACY_BUCKET_URL"
+
 echo "Syncing static files from $STATIC_LEGACY_BUCKET_URL..."
 
 curl "$STATIC_LEGACY_BUCKET_URL"/static/css/admin-styles.css -o "$STATIC_DIR/admin-styles.css"
