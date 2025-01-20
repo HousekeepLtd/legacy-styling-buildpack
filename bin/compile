@@ -1,0 +1,39 @@
+#!/bin/bash
+
+BUILD_DIR=$1
+CACHE_DIR=$2
+ENV_DIR=$3
+
+set -euo pipefail
+
+echo "Creating static directory"
+
+
+STATIC_DIR="$BUILD_DIR/housekeep/static/css"
+
+# Make sure we're at the root level
+cd "$BUILD_DIR" || exit
+
+# Create static directory
+mkdir -p "$STATIC_DIR"
+
+STATIC_LEGACY_BUCKET_URL=$(cat "$ENV_DIR/STATIC_LEGACY_BUCKET_URL")
+
+echo "$STATIC_LEGACY_BUCKET_URL"
+
+echo "Syncing static files..."
+
+curl "$STATIC_LEGACY_BUCKET_URL"/static/css/admin-styles.css -o "$STATIC_DIR/admin-styles.css"
+curl "$STATIC_LEGACY_BUCKET_URL"/static/css/admin.css -o "$STATIC_DIR/admin.css"
+curl "$STATIC_LEGACY_BUCKET_URL"/static/css/app-housekeepers-fallback.css -o "$STATIC_DIR/app-housekeepers-fallback.css"
+curl "$STATIC_LEGACY_BUCKET_URL"/static/css/email-base-premailer-ignore.css -o "$STATIC_DIR/email-base-premailer-ignore.css"
+curl "$STATIC_LEGACY_BUCKET_URL"/static/css/email-base.css -o "$STATIC_DIR/email-base.css"
+curl "$STATIC_LEGACY_BUCKET_URL"/static/css/emailed_infosheet.css -o "$STATIC_DIR/emailed_infosheet.css"
+curl "$STATIC_LEGACY_BUCKET_URL"/static/css/infosheet.css -o "$STATIC_DIR/infosheet.css"
+curl "$STATIC_LEGACY_BUCKET_URL"/static/css/members.css -o "$STATIC_DIR/members.css"
+curl "$STATIC_LEGACY_BUCKET_URL"/static/css/ops-styles.css -o "$STATIC_DIR/ops-styles.css"
+curl "$STATIC_LEGACY_BUCKET_URL"/static/css/recruit.css -o "$STATIC_DIR/recruit.css"
+curl "$STATIC_LEGACY_BUCKET_URL"/static/css/style.css -o "$STATIC_DIR/style.css"
+curl "$STATIC_LEGACY_BUCKET_URL"/static/css/worker-agreement.css -o "$STATIC_DIR/worker-agreement.css"
+
+echo "Syncing complete"

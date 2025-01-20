@@ -1,0 +1,10 @@
+#!/bin/sh
+
+APP_DIR=$1
+
+if [ -f "$APP_DIR/Gemfile" ]; then
+  echo "Styling requirements"
+  exit 0
+else
+  exit 1
+fi
