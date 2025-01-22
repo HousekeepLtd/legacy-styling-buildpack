@@ -17,6 +17,7 @@ cd "$BUILD_DIR" || exit
 
 # Create static directory
 mkdir -p "$STATIC_DIR"
+mkdir -p "$WORKER_STATIC_DIR"
 
 STATIC_LEGACY_BUCKET_URL=$(cat "$ENV_DIR/STATIC_LEGACY_BUCKET_URL")
 
