@@ -10,6 +10,7 @@ echo "Creating static directory"
 
 
 STATIC_DIR="$BUILD_DIR/housekeep/static/css"
+WORKER_STATIC_DIR="$BUILD_DIR/housekeep/worker/static/css"
 
 # Make sure we're at the root level
 cd "$BUILD_DIR" || exit
@@ -28,8 +29,8 @@ curl "$STATIC_LEGACY_BUCKET_URL"/static/css/admin.css -o "$STATIC_DIR/admin.css"
 curl "$STATIC_LEGACY_BUCKET_URL"/static/css/app-housekeepers-fallback.css -o "$STATIC_DIR/app-housekeepers-fallback.css"
 curl "$STATIC_LEGACY_BUCKET_URL"/static/css/email-base-premailer-ignore.css -o "$STATIC_DIR/email-base-premailer-ignore.css"
 curl "$STATIC_LEGACY_BUCKET_URL"/static/css/email-base.css -o "$STATIC_DIR/email-base.css"
-curl "$STATIC_LEGACY_BUCKET_URL"/static/css/emailed_infosheet.css -o "$STATIC_DIR/emailed_infosheet.css"
-curl "$STATIC_LEGACY_BUCKET_URL"/static/css/infosheet.css -o "$STATIC_DIR/infosheet.css"
+curl "$STATIC_LEGACY_BUCKET_URL"/static/css/emailed_infosheet.css -o "$WORKER_STATIC_DIR/emailed_infosheet.css"
+curl "$STATIC_LEGACY_BUCKET_URL"/static/css/infosheet.css -o "$WORKER_STATIC_DIR/infosheet.css"
 curl "$STATIC_LEGACY_BUCKET_URL"/static/css/members.css -o "$STATIC_DIR/members.css"
 curl "$STATIC_LEGACY_BUCKET_URL"/static/css/ops-styles.css -o "$STATIC_DIR/ops-styles.css"
 curl "$STATIC_LEGACY_BUCKET_URL"/static/css/recruit.css -o "$STATIC_DIR/recruit.css"
